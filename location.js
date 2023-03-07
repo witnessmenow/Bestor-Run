@@ -16,7 +16,7 @@ navigator.geolocation.watchPosition(function (position) {
     
     totalDistanceTravelled += newDistanceTraveled;
 
-    roundedDistance = Math.round(totalDistanceTravelled * 100) / 100
+    var roundedDistance = Math.round(totalDistanceTravelled * 100) / 100
     document.getElementById('roundedDistance').innerHTML = roundedDistance;
 
     document.getElementById('distance').innerHTML = totalDistanceTravelled;
