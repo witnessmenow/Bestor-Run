@@ -1,28 +1,36 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="location2.js"></script>
+        <link rel="stylesheet" href="normalize.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     </head>
     <body>
-        <div id="tripmeter">
-            <p>
-            Total Distance traveled:<br/>
-            <span id="roundedDistance">0</span> km
-            </p>
-            <br>
-            <p>
-            Total Distance traveled:<br/>
-            <span id="distance">0</span> km
-            </p>
-            <br>
-            <p>
-            New Distance traveled:<br/>
-            <span id="newDistance">0</span> km
-            </p>
-            <button onclick="startTracking()" id="start">Start</button>
-            <button onclick="stopTracking()" id="stop">Stop</button>
+        <div class="row">
+            <div class="col-md-3">
+                <p>
+                Total Distance traveled:<br/>
+                <span id="roundedDistance">0</span> km
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                Total Distance traveled:<br/>
+                <span id="distance">0</span> km
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                New Distance traveled:<br/>
+                <span id="newDistance">0</span> km
+                </p>
+            </div>
+            <div class="col-md-3">
+                <button onclick="startTracking()" id="start">Start</button>
+                <button onclick="stopTracking()" id="stop">Stop</button>
+            </div>
         </div>
     </body>
 </html>
