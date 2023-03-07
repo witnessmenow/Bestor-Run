@@ -3,12 +3,6 @@ var isFirst = true;
 var intervalId;
 var totalDistanceTravelled = 0;
 
-window.onload = function() {
-    document.getElementById("start").addEventListener("click", startTracking);
-    document.getElementById("stop").addEventListener("click", stopTracking);
-}
-
-
 function startTracking() {
     isFirst = true;
     totalDistanceTravelled = 0;
