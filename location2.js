@@ -18,6 +18,7 @@ function manualTrack() {
     navigator.geolocation.getCurrentPosition(function (position) {
         if (isFirst) {
             lastKnownPosition = position;
+            isFirst = false;
         } else {
             var newDistanceTraveled = calculateDistance(lastKnownPosition.coords.latitude, lastKnownPosition.coords.longitude,
                 position.coords.latitude, position.coords.longitude);
