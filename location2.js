@@ -4,6 +4,7 @@ var intervalId;
 var totalDistanceTravelled = 0;
 
 function startTracking() {
+    manualTrack()
     isFirst = true;
     totalDistanceTravelled = 0;
     intervalId = setInterval(manualTrack, 5000);
@@ -15,27 +16,37 @@ function stopTracking() {
 }
 
 function manualTrack() {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        if (isFirst) {
-            lastKnownPosition = position;
-            isFirst = false;
-        } else {
-            var newDistanceTraveled = calculateDistance(lastKnownPosition.coords.latitude, lastKnownPosition.coords.longitude,
-                position.coords.latitude, position.coords.longitude);
-
-            totalDistanceTravelled += newDistanceTraveled;
-
-            var roundedDistance = Math.round(totalDistanceTravelled * 100) / 100
-            document.getElementById('roundedDistance').innerHTML = roundedDistance;
-
-            document.getElementById('distance').innerHTML = totalDistanceTravelled;
-            document.getElementById('newDistance').innerHTML = newDistanceTraveled;
-
-            lastKnownPosition = position;
-        }
-
-    });
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+    navigator.geolocation.getCurrentPosition(getPosition, error, options);
 }
+
+function getPosition(position){
+    if (isFirst) {
+        lastKnownPosition = position;
+        isFirst = false;
+    } else {
+        var newDistanceTraveled = calculateDistance(lastKnownPosition.coords.latitude, lastKnownPosition.coords.longitude,
+            position.coords.latitude, position.coords.longitude);
+
+        totalDistanceTravelled += newDistanceTraveled;
+
+        var roundedDistance = Math.round(totalDistanceTravelled * 100) / 100
+        document.getElementById('roundedDistance').innerHTML = roundedDistance;
+
+        document.getElementById('distance').innerHTML = totalDistanceTravelled;
+        document.getElementById('newDistance').innerHTML = newDistanceTraveled;
+
+        lastKnownPosition = position;
+    }
+}
+
+function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
 
 
 

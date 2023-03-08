@@ -3,17 +3,25 @@ var lastKnownPosition;
 var totalDistanceTravelled = 0;
 
 window.onload = function() {
+
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+
     navigator.geolocation.getCurrentPosition(function(position) {
     lastKnownPosition = position;
-    });
+    }, error, options);
+
+
+    navigator.geolocation.watchPosition(getPosition, error, options);
 };
 
-navigator.geolocation.watchPosition(function (position) {
-    // same as above
-     
+function getPosition(position){
     var newDistanceTraveled = calculateDistance(lastKnownPosition.coords.latitude, lastKnownPosition.coords.longitude,
-            position.coords.latitude, position.coords.longitude);
-    
+        position.coords.latitude, position.coords.longitude);
+
     totalDistanceTravelled += newDistanceTraveled;
 
     var roundedDistance = Math.round(totalDistanceTravelled * 100) / 100
@@ -23,7 +31,11 @@ navigator.geolocation.watchPosition(function (position) {
     document.getElementById('newDistance').innerHTML = newDistanceTraveled;
 
     lastKnownPosition = position;
-});
+}
+
+function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
