@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BackgroundGeolocation Example</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    body {
+      margin-top: 2em;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+  </style>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-3 col-md-12">
+              <p>
+                  Total Distance traveled:<br />
+                  <span id="roundedDistance">0</span> km
+              </p>
+          </div>
+          <div class="col-sm-3 col-md-12">
+              <p>
+                  Total Distance traveled:<br />
+                  <span id="distance">0</span> km
+              </p>
+          </div>
+          <div class="col-sm-3 col-md-12">
+              <p>
+                  New Distance traveled:<br />
+                  <span id="newDistance">0</span> km
+              </p>
+          </div>
+          <div class="col-sm-3 col-md-12">
+            <button onclick="add_watcher(false)">+FG</button>
+            <button onclick="add_watcher(true)">+BG</button>
+          </div>
+      </div>
+  </div>
+
+  <ul id="watchers"></ul>
+  <!-- <h1>HI wow much</h1>
+  <button onclick="add_watcher(false)">+FG</button>
+  <button onclick="add_watcher(true)">+BG</button> -->
+  <!-- Guess:
+  <button onclick="guess(50)">50ms</button>
+  <button onclick="guess(100)">100ms</button>
+  <button onclick="guess(250)">250ms</button>
+  <button onclick="guess(1000)">1000ms</button> -->
+
+  <ul id="log">
+    <li>Init</li>
+  </ul>
+
+
+
+  <script src="capacitor.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+
